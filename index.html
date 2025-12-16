@@ -320,6 +320,55 @@
     .back-to-top:active {
       transform: scale(0.9);
     }
+    
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .lightbox-close:active {
+      transform: scale(0.9);
+    }
+    .gallery-item {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .gallery-item:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 <body>
@@ -369,28 +418,28 @@
   <!-- Photo Gallery -->
   <div class="gallery">
     <div class="gallery-grid">
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://raw.githubusercontent.com/saratsiri/brz/main/images/front.jpg" loading="lazy" alt="BRZ Front View">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://raw.githubusercontent.com/saratsiri/brz/main/images/back.jpg" loading="lazy" alt="BRZ Rear View">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://raw.githubusercontent.com/saratsiri/brz/main/images/engine-bay.jpg" loading="lazy" alt="BRZ Engine Bay">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://i.postimg.cc/bsBnLF0t/80B9AA42-4B98-438B-A303-054429A5B708.jpg" loading="lazy" alt="BRZ Interior">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://i.postimg.cc/mzgZvTB2/84716448-2400-423B-A12D-8D0153D8B82A.jpg" loading="lazy" alt="BRZ Wheels">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://i.postimg.cc/yWNW5y8X/9508349B-35A3-4902-B2ED-79C31CD97B0E.jpg" loading="lazy" alt="BRZ Side View">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://i.postimg.cc/HVcnWW5r/9E5C9B0D-8E04-4735-B3B3-A8810683FDA1.jpg" loading="lazy" alt="BRZ Detail">
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox(this)">
         <img src="https://i.postimg.cc/sBFhCQNf/A508CE90-7733-4A39-BFF4-5DC0F46B45B4.jpg" loading="lazy" alt="BRZ Detail">
       </div>
     </div>
@@ -798,7 +847,42 @@
   ↑
 </div>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
+// Lightbox functions
+function openLightbox(element) {
+  const img = element.querySelector('img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('active');
+  
+  // Prevent body scroll when lightbox is open
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  
+  // Restore body scroll
+  document.body.style.overflow = '';
+}
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+
 // Smooth scroll for navigation
 document.querySelectorAll('.nav a').forEach(link => {
   link.addEventListener('click', function(e) {
