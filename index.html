@@ -19,15 +19,29 @@
       --card: #ffffff;
       --text: #2c3e50;
       --muted: #7f8c8d;
+      
+      /* Category colors */
+      --engine-start: #0057a3;
+      --engine-end: #0077cc;
+      --suspension-start: #27ae60;
+      --suspension-end: #2ecc71;
+      --brakes-start: #d35400;
+      --brakes-end: #e67e22;
+      --chassis-start: #8e44ad;
+      --chassis-end: #9b59b6;
+      --interior-start: #16a085;
+      --interior-end: #1abc9c;
+      --wheels-start: #f39c12;
+      --wheels-end: #f1c40f;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { 
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
       background: var(--bg); 
       color: var(--text);
-      font-size: 16px;
-      line-height: 1.5;
-      padding-bottom: 80px;
+      font-size: 15px;
+      line-height: 1.4;
+      padding-bottom: 60px;
     }
     
     /* Page system */
@@ -38,18 +52,18 @@
     .header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 30px 20px 20px;
+      padding: 20px 15px 15px;
       text-align: center;
     }
-    .header h1 { font-size: 24px; margin-bottom: 8px; font-weight: 700; }
-    .header .subtitle { font-size: 14px; opacity: 0.95; margin-bottom: 3px; }
+    .header h1 { font-size: 22px; margin-bottom: 6px; font-weight: 700; }
+    .header .subtitle { font-size: 13px; opacity: 0.95; margin-bottom: 2px; }
     .header .price { 
-      font-size: 28px; 
+      font-size: 26px; 
       font-weight: 800; 
-      margin-top: 12px;
+      margin-top: 10px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
-    .header .mileage { font-size: 13px; opacity: 0.9; margin-top: 5px; }
+    .header .mileage { font-size: 12px; opacity: 0.9; margin-top: 4px; }
     
     /* Sticky Navigation */
     .nav-container {
@@ -62,19 +76,19 @@
     .nav {
       display: flex;
       overflow-x: auto;
-      padding: 12px 15px;
-      gap: 8px;
+      padding: 8px 12px;
+      gap: 6px;
       -webkit-overflow-scrolling: touch;
     }
     .nav::-webkit-scrollbar { display: none; }
     .nav a {
       flex-shrink: 0;
-      padding: 9px 16px;
+      padding: 7px 14px;
       background: var(--bg);
       border-radius: 20px;
       text-decoration: none;
       color: var(--text);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       border: 2px solid transparent;
       transition: all 0.2s;
@@ -88,44 +102,46 @@
     .quick-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      padding: 15px;
+      gap: 8px;
+      padding: 10px;
       background: white;
       border-bottom: 1px solid #e0e0e0;
     }
     .stat-box {
       text-align: center;
-      padding: 12px 8px;
+      padding: 10px 6px;
       background: var(--bg);
-      border-radius: 12px;
+      border-radius: 10px;
     }
     .stat-box .value {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      color: var(--primary);
     }
+    .stat-box:nth-child(1) .value { color: #0057a3; }
+    .stat-box:nth-child(2) .value { color: #27ae60; }
+    .stat-box:nth-child(3) .value { color: #8e44ad; }
     .stat-box .label {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--muted);
-      margin-top: 3px;
+      margin-top: 2px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     
     /* Image gallery */
     .gallery {
-      padding: 15px;
+      padding: 10px;
       background: white;
       border-bottom: 1px solid #e0e0e0;
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
     }
     .gallery-item {
-      aspect-ratio: 4/3;
-      border-radius: 12px;
+      aspect-ratio: 1;
+      border-radius: 8px;
       overflow: hidden;
       position: relative;
       background: #000;
@@ -141,60 +157,68 @@
     
     /* Sections */
     .section {
-      margin: 15px;
+      margin: 10px;
       background: var(--card);
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       overflow: hidden;
     }
     .section-header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 15px 18px;
-      font-size: 18px;
+      padding: 12px 14px;
+      font-size: 16px;
       font-weight: 700;
     }
-    .section-content { padding: 18px; }
+    .section-content { padding: 14px; }
+    
+    /* Color-coded section headers */
+    #interior .section-header { background: linear-gradient(135deg, var(--interior-start), var(--interior-end)); }
+    #suspension .section-header { background: linear-gradient(135deg, var(--suspension-start), var(--suspension-end)); }
+    #brakes .section-header { background: linear-gradient(135deg, var(--brakes-start), var(--brakes-end)); }
+    #chassis .section-header { background: linear-gradient(135deg, var(--chassis-start), var(--chassis-end)); }
+    #wheels .section-header { background: linear-gradient(135deg, var(--wheels-start), var(--wheels-end)); }
+    #engine .section-header { background: linear-gradient(135deg, var(--engine-start), var(--engine-end)); }
+    #service .section-header, #overview .section-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
     
     /* Info rows */
     .info-row {
       display: flex;
-      padding: 12px 0;
+      padding: 8px 0;
       border-bottom: 1px solid #f0f0f0;
     }
     .info-row:last-child { border-bottom: none; }
     .info-label {
-      width: 120px;
+      width: 100px;
       flex-shrink: 0;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--primary);
     }
     .info-value { 
       flex: 1; 
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 13px;
+      line-height: 1.4;
     }
     
     /* Mod item */
     .mod-item {
-      padding: 14px;
+      padding: 10px;
       background: var(--bg);
-      border-radius: 12px;
-      margin-bottom: 10px;
-      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      border-left: 3px solid var(--primary);
     }
     .mod-item:last-child { margin-bottom: 0; }
     .mod-title {
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14px;
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .mod-detail {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
     
     /* Category badges */
@@ -217,77 +241,77 @@
     
     /* Alert boxes */
     .alert {
-      padding: 15px;
-      border-radius: 12px;
-      border-left: 4px solid;
-      font-size: 14px;
-      line-height: 1.7;
+      padding: 12px;
+      border-radius: 10px;
+      border-left: 3px solid;
+      font-size: 13px;
+      line-height: 1.5;
     }
     .alert strong { color: var(--text); }
     .alert-info {
-      background: #e8f5fd;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
       border-color: var(--primary);
     }
     .alert-warning {
-      background: #fff4e5;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
       border-color: var(--warning);
     }
     .alert-success {
-      background: #e8f6f3;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
       border-color: var(--success);
     }
     
     /* Why selling section */
     .why-selling {
-      margin: 15px;
-      padding: 20px;
-      background: linear-gradient(135deg, #fff4e5, #ffe8d1);
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border-left: 6px solid var(--warning);
+      margin: 10px;
+      padding: 14px;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--warning);
     }
     .why-selling h3 {
-      font-size: 20px;
-      margin-bottom: 15px;
+      font-size: 17px;
+      margin-bottom: 10px;
       color: var(--text);
     }
     .why-selling p {
-      font-size: 14px;
-      line-height: 1.7;
+      font-size: 13px;
+      line-height: 1.5;
       color: var(--text);
     }
     
     /* Contact section */
     .contact-section {
-      margin: 15px;
-      padding: 25px;
+      margin: 10px;
+      padding: 18px;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 16px;
+      border-radius: 12px;
       color: white;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,87,163,0.3);
+      box-shadow: 0 3px 10px rgba(0,87,163,0.3);
     }
     .contact-section h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
+      font-size: 19px;
+      margin-bottom: 12px;
     }
     .contact-buttons {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 15px;
       flex-wrap: wrap;
     }
     .contact-btn {
-      padding: 14px 24px;
+      padding: 12px 20px;
       background: white;
       color: var(--primary);
       text-decoration: none;
-      border-radius: 25px;
+      border-radius: 20px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 14px;
       transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
     .contact-btn:active {
       transform: scale(0.95);
@@ -492,35 +516,35 @@
       <div class="mod-item">
         <div class="mod-title">3M Crystalline Window Film</div>
         <div class="mod-detail">
-          Premium ceramic window tint for heat rejection and UV protection
+          Premium ceramic tint for heat rejection and UV protection
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Ground Zero Speaker Upgrade</div>
+        <div class="mod-title">Ground Zero Speakers</div>
         <div class="mod-detail">
-          High-quality audio speakers for enhanced sound quality
+          High-quality audio upgrade
         </div>
       </div>
 
       <div class="mod-item">
         <div class="mod-title">Kenwood DDX919WS Head Unit</div>
         <div class="mod-detail">
-          Wireless Apple CarPlay • Large touchscreen display • Modern connectivity
+          Wireless Apple CarPlay • Large touchscreen
         </div>
       </div>
 
       <div class="mod-item">
         <div class="mod-title">Verus Pedal Spacer</div>
         <div class="mod-detail">
-          Improved ergonomics and pedal positioning for better control
+          Improved ergonomics and pedal positioning
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Full LED Interior & Exterior Lighting</div>
+        <div class="mod-title">Full LED Lighting</div>
         <div class="mod-detail">
-          All interior lights and exterior lights converted to LED for modern look and efficiency
+          All interior and exterior lights converted to LED
         </div>
       </div>
 
@@ -533,38 +557,30 @@
     <div class="section-content">
       
       <div class="mod-item">
-        <div class="mod-title">HiperMax Type R Coilovers</div>
+        <div class="mod-title">HiperMax Type R Coilovers (9k/10k)</div>
         <div class="mod-detail">
-          Spring rates: 9kg/mm front, 10kg/mm rear<br>
-          Adjustable damping • Track-focused setup • Excellent handling characteristics
+          Adjustable damping • Track-focused setup
         </div>
       </div>
 
       <div class="mod-item">
         <div class="mod-title">Spherical Rear Toe Arm Link</div>
         <div class="mod-detail">
-          Precision spherical bearings for improved rear suspension geometry and reduced deflection
+          Precision bearings for improved geometry and reduced deflection
         </div>
       </div>
 
       <div class="mod-item">
         <div class="mod-title">SPC Front Camber Bolts</div>
         <div class="mod-detail">
-          Adjustable front camber for precise alignment setup and tire wear optimization
+          Adjustable camber for precise alignment
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Whiteline Rear Differential Mount Bushing (KDT925)</div>
+        <div class="mod-title">Whiteline Differential & Subframe Bushings</div>
         <div class="mod-detail">
-          Urethane bushing to reduce differential movement under load
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-title">Whiteline Rear Subframe Bushing (KDT922)</div>
-        <div class="mod-detail">
-          Stiffer subframe bushings for improved rear end response
+          KDT925 diff mount + KDT922 subframe bushings for reduced movement
         </div>
       </div>
 
@@ -577,23 +593,16 @@
     <div class="section-content">
       
       <div class="mod-item">
-        <div class="mod-title">Dixcel Type Z Front Brake Pads</div>
+        <div class="mod-title">Dixcel Type Z + Project Mu Front Setup</div>
         <div class="mod-detail">
-          High-performance street/track brake pads with excellent bite and fade resistance
+          High-performance pads and rotors • Fade-free performance
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Project Mu Front Brake Discs</div>
+        <div class="mod-title">Beatrush Master Cylinder Brace</div>
         <div class="mod-detail">
-          Quality aftermarket rotors for improved braking performance and heat dissipation
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-title">Beatrush Brake Master Cylinder Brace</div>
-        <div class="mod-detail">
-          Chassis brace to reduce brake pedal flex and improve pedal feel
+          Reduces pedal flex for improved feel
         </div>
       </div>
 
@@ -605,50 +614,36 @@
     <div class="section-header">🏗️ Chassis Reinforcement</div>
     <div class="section-content">
       
-      <div class="alert alert-info" style="margin-bottom: 15px;">
+      <div class="alert alert-info" style="margin-bottom: 10px;">
         <strong>🎯 Comprehensive Chassis Bracing</strong>
-        Extensive chassis bracing package to maximize chassis rigidity and handling response. All strut tower braces work together to reduce chassis flex during cornering.
+        Extensive bracing reduces chassis flex for improved handling response.
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">STI Front Strut Tower Brace</div>
+        <div class="mod-title">STI + Cusco Front Strut Tower Braces</div>
         <div class="mod-detail">
-          OEM STI strut brace to connect front strut towers and reduce flex
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-title">Cusco Front Strut Tower Brace</div>
-        <div class="mod-detail">
-          Additional front tower brace for maximum rigidity
+          Dual front tower braces for maximum rigidity
         </div>
       </div>
 
       <div class="mod-item">
         <div class="mod-title">Beatrush Rear Strut Bar</div>
         <div class="mod-detail">
-          Rear strut tower brace to reduce rear chassis flex
+          Reduces rear chassis flex
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Front Member Brace</div>
+        <div class="mod-title">Front Member + Lower Arm Braces</div>
         <div class="mod-detail">
-          Reinforces front subframe area for improved steering response
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-title">Front Lower Arm Brace</div>
-        <div class="mod-detail">
-          Lower control arm brace to reduce suspension deflection
+          Reinforces subframe and lower control arms
         </div>
       </div>
 
       <div class="mod-item">
         <div class="mod-title">Cusco Lateral Link Brace</div>
         <div class="mod-detail">
-          Rear lateral link reinforcement to maintain proper suspension geometry under load
+          Rear lateral link reinforcement
         </div>
       </div>
 
@@ -661,20 +656,16 @@
     <div class="section-content">
       
       <div class="mod-item">
-        <div class="mod-title">Prodrive GC-010E Wheels</div>
+        <div class="mod-title">Prodrive GC-010E Wheels (18x7.5 +47)</div>
         <div class="mod-detail">
-          <strong>Specifications:</strong> 18x7.5 +47 offset<br>
-          <strong>Weight:</strong> Only 6.9kg per wheel<br>
-          <strong>Benefit:</strong> Significant unsprung weight reduction for improved handling, acceleration, and braking
+          Only 6.9kg per wheel • Significant unsprung weight reduction
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Lightweight Battery</div>
+        <div class="mod-title">Lightweight Battery (2kg)</div>
         <div class="mod-detail">
-          <strong>Weight:</strong> 2kg (saves 10kg vs stock)<br>
-          <strong>Life:</strong> Rated for 7 years<br>
-          <strong>Benefit:</strong> Reduces front weight and improves weight distribution
+          Saves 10kg vs stock • 7-year rated life • Improves weight distribution
         </div>
       </div>
 
@@ -687,26 +678,22 @@
     <div class="section-content">
       
       <div class="mod-item">
-        <div class="mod-title">EcuTek License Available</div>
+        <div class="mod-title">EcuTek License (40,000 baht)</div>
         <div class="mod-detail">
-          <strong>Value:</strong> 40,000 baht<br>
-          <strong>Status:</strong> Currently on stock tune<br>
-          <strong>Potential:</strong> Professional ECU tuning capability with EcuTek system for power optimization and custom tuning
+          Ready for professional tuning. Currently on stock tune.
         </div>
       </div>
 
       <div class="mod-item">
-        <div class="mod-title">Setrab Oil Cooler</div>
+        <div class="mod-title">Setrab Oil Cooler (20,000 baht)</div>
         <div class="mod-detail">
-          <strong>Value:</strong> 20,000 baht<br>
-          <strong>Benefit:</strong> Oil temperature stays consistently cool - never overheats even in Bangkok traffic<br>
-          Essential upgrade for the FA20 boxer engine, particularly in Thailand's climate
+          Oil temps stay cool even at sustained high RPM and spirited driving. Stock car overheats after a few overtakes - this completely eliminates that issue.
         </div>
       </div>
 
       <div class="alert alert-success">
-        <strong>💡 Engine Longevity Focus</strong>
-        The Setrab oil cooler and proper oil maintenance practices ensure optimal engine temperatures and longevity. Oil is always filled slightly above recommended level to address the known Subaru boxer engine oil starvation issue during cornering.
+        <strong>💡 Engine Care</strong>
+        Setrab oil cooler keeps temps optimal even during spirited driving. Oil filled slightly above recommended level to prevent starvation in corners (known boxer engine issue).
       </div>
 
     </div>
@@ -717,43 +704,29 @@
     <div class="section-header">🔧 Service & Maintenance History</div>
     <div class="section-content">
       
-      <div class="alert alert-success" style="margin-bottom: 15px;">
+      <div class="alert alert-success" style="margin-bottom: 10px;">
         <strong>✅ Meticulously Maintained</strong>
-        Regular maintenance performed on schedule with quality products. Complete service records available.
+        Regular maintenance with quality products. Complete records available.
       </div>
 
       <div class="info-row">
         <div class="info-label">Oil Changes</div>
         <div class="info-value">
-          <strong>Every 7,000 km</strong><br>
-          Most recent: October 2025 at 47,000 km
+          Every 7,000 km • Last: Oct 2025 at 47,000 km
         </div>
       </div>
 
       <div class="info-row">
         <div class="info-label">Transmission</div>
         <div class="info-value">
-          <strong>Transmission oil changed at 28,000 km</strong><br>
-          Regular automatic transmission maintenance
-        </div>
-      </div>
-
-      <div class="info-row">
-        <div class="info-label">Maintenance</div>
-        <div class="info-value">
-          All scheduled maintenance performed on time<br>
-          Quality fluids and parts used throughout ownership
+          Changed at 28,000 km
         </div>
       </div>
 
       <div class="info-row">
         <div class="info-label">Condition</div>
         <div class="info-value">
-          • Zero accidents<br>
-          • Zero mechanical issues<br>
-          • Clean title<br>
-          • First owner<br>
-          • Garage kept
+          Zero accidents • Zero issues • Garage kept • First owner
         </div>
       </div>
 
@@ -764,20 +737,13 @@
   <div id="why" class="why-selling">
     <h3>💭 Why I'm Selling</h3>
     <p>
-      This BRZ has been meticulously maintained and upgraded over the years with carefully selected modifications focused on handling precision and driving enjoyment. I've invested significantly in quality suspension components, chassis bracing, and interior upgrades.
+      This BRZ has been meticulously maintained and upgraded with quality suspension, chassis bracing, and performance parts. I'm selling to consolidate my collection and move to a different vehicle.
     </p>
-    <p style="margin-top: 12px;">
-      <strong>The honest reason:</strong><br>
-      I'm selling to consolidate my car collection and move to a different vehicle that better suits my current needs. This car has been a joy to own and has never given me any mechanical issues.
+    <p style="margin-top: 10px;">
+      The car is in excellent condition with zero accidents and zero issues. All modifications professionally installed. The EcuTek license alone is worth 40,000 baht. Complete documentation and service records available.
     </p>
-    <p style="margin-top: 12px;">
-      The BRZ is in excellent mechanical and cosmetic condition with comprehensive service records. All modifications have been professionally installed and the car drives beautifully. The suspension setup provides a good balance between street comfort and spirited driving capability.
-    </p>
-    <p style="margin-top: 12px;">
-      <strong>Included:</strong> Complete documentation of all modifications and service records. The EcuTek license alone is worth 40,000 baht and opens up tuning potential for the next owner.
-    </p>
-    <p style="margin-top: 12px;">
-      Looking for an enthusiast who will appreciate the quality modifications and continue to care for this well-maintained BRZ. <strong>Price is negotiable for serious buyers.</strong>
+    <p style="margin-top: 10px;">
+      Looking for an enthusiast who will appreciate the quality modifications. <strong>Price is negotiable for serious buyers.</strong>
     </p>
   </div>
 
@@ -787,19 +753,19 @@
     <div class="section-content">
       <div class="info-row">
         <div class="info-label">Documentation</div>
-        <div class="info-value">Original purchase documents, all modification receipts, complete service history, maintenance records</div>
+        <div class="info-value">All receipts, service records, original purchase docs</div>
       </div>
       <div class="info-row">
         <div class="info-label">Stock Parts</div>
-        <div class="info-value">Stock wheels and any retained stock parts included</div>
+        <div class="info-value">Stock wheels and retained original parts</div>
       </div>
       <div class="info-row">
         <div class="info-label">Accessories</div>
-        <div class="info-value">EcuTek license (40,000 baht value), all service documentation</div>
+        <div class="info-value">EcuTek license (40,000 baht value)</div>
       </div>
       <div class="info-row">
         <div class="info-label">Keys</div>
-        <div class="info-value">All original keys included</div>
+        <div class="info-value">All original keys</div>
       </div>
       <div class="info-row">
         <div class="info-label">Warranty</div>
@@ -809,17 +775,18 @@
   </div>
 
   <!-- Terms -->
-  <div class="alert alert-warning">
+  <div class="alert alert-warning" style="margin: 10px;">
     <strong>⚠️ Important Notes</strong>
-    Serious buyers only. Test drives available after verification of funds/financing. Pre-purchase inspection welcome at buyer's expense. No trades. First owner. Zero accidents. First class insurance valid until April 2025. All modification documentation and service records available.
+    No trades. First owner. Zero accidents. First class insurance valid until April 2025. All modification documentation and service records available.
+  </div>
   </div>
 
   <!-- Contact Section -->
   <div id="contact" class="contact-section">
     <h3>📱 Contact Information</h3>
-    <p style="margin-bottom: 20px; font-size: 14px; opacity: 0.95;">
-      Available for viewing by appointment. Located in Bangkok.<br>
-      <strong>Price is negotiable - serious buyers welcome!</strong>
+    <p style="margin-bottom: 15px; font-size: 13px; opacity: 0.95;">
+      Located in Bangkok • Available for viewing<br>
+      <strong>Price negotiable for serious buyers</strong>
     </p>
     <div class="contact-buttons">
       <a href="tel:+66XXXXXXXXX" class="contact-btn">
@@ -835,9 +802,8 @@
   </div>
 
   <!-- Footer -->
-  <div style="text-align: center; padding: 30px 20px; color: var(--muted); font-size: 13px;">
-    <p>This listing created on December 16, 2025</p>
-    <p style="margin-top: 8px;">🏁 Well maintained, carefully upgraded</p>
+  <div style="text-align: center; padding: 20px 15px; color: var(--muted); font-size: 12px;">
+    <p>Listed December 2025</p>
   </div>
 
 </div>
